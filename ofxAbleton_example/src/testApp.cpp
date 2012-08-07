@@ -7,12 +7,23 @@
 void testApp::setup(){
 
     
-	ofBackground(40, 100, 40);
+
+//	ofBackground(40, 100, 40);
+    ofBackgroundGradient( ofColor( 15 , 15 , 15 ), ofColor( 65 , 65 , 65 ) ) ; 
 
     //LiveOSC listens on port 9000 and sends data back on 9001
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, SEND_PORT );
-    receiver.setup( RECEIVE_PORT ) ; 
+    receiver.setup( RECEIVE_PORT ) ;
+    
+    messageText.init( 10 , 400 , "type/Batang.ttf" , 16 ) ;
+    
+    bAbletonPlaying = false ; 
+    mouseDragMax = 200 ;
+    mouseDragMin = 40 ;
+    mouseDragValue = mouseDragMin ;
+    
+    bAttachMouse = true ;
 }
 
 //--------------------------------------------------------------
@@ -47,8 +58,14 @@ void testApp::update(){
             }
         }
         
-        lastReceivedString = msg_string ; 
+        cout << msg_string << endl ; 
+        
+        lastReceivedString = msg_string ;
     }
+    
+    messageText.update ( ) ;
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -59,24 +76,72 @@ void testApp::draw(){
     ofDrawBitmapString( "listening osc messages on " + string(HOST) + ofToString( RECEIVE_PORT ), 10, 35 );
 	ofDrawBitmapString( "Last SENT " + lastSentString , 10, 50 );
 	ofDrawBitmapString( "last RECEIVED" + lastReceivedString , 10, 65 );
+    
+    ofSetColor( 255 , 255 , 125 ) ;
+    ofLine ( 0 , mouseDragWindow.y , ofGetWidth() , mouseDragWindow.y ) ;
+    ofSetColor( 125 , 255 , 255 ) ;
+    ofLine ( mouseDragWindow.x , 0 , mouseDragWindow.x , ofGetHeight() ) ;
+    
+    ofSetColor( 255 , 255 ,255 ) ;
+    messageText.draw ( ) ; 
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
+    //13 is enter
+   
     
-    switch ( key ) 
+    switch ( key )
     {
+           // if(key == 13)key = '\n';
+            
+                        
         case 'a':
         case 'A':
-            sendMessage( "/live/play" ) ; 
+            //sendMessage( "/live/play" ) ;
             break ; 
         
         case 'z':
         case 'Z':
-            sendMessage( "/live/stop" ) ; 
+            //sendMessage( "/live/stop" ) ;
+            break ;
+            
+        case 13:
+            //SEND THE MESSAGE
+            sendMessage( messageText.text ) ;
+            return ; 
+            break ;
+            
+        case 'm':
+        case 'M':
+            bAttachMouse = !bAttachMouse ;
             break ; 
     }
+    
+    //cout << "key pressed!" << key << endl ;
+    if(key == 8 || key == 127 )
+    {
+        /*
+         if( pos != 0 ){pos--;
+         msgTx = msgTx.substr(0,pos);
+         }else msgTx = "";*/
+        messageText.backspace() ;
+    }
+    else{
+        if ( key != 32 )
+            messageText.text.append(1, (char) key);
+        else
+        {
+            bAbletonPlaying = !bAbletonPlaying ;
+            string playbackCommand = "/live/play" ;
+            if ( bAbletonPlaying == false )
+                playbackCommand = "/live/stop" ;
+            
+            sendMessage( playbackCommand ) ;
+        }
+    }
+
     
 	if(key == 'a' || key == 'A'){
 		
@@ -92,10 +157,22 @@ void testApp::keyPressed(int key){
 
 void testApp::sendMessage ( string message ) 
 {
+    
     ofxOscMessage m;
     m.setAddress( message );
-    lastSentString = message ; 
+    
+
+         
+    lastSentString = message ;
+    if ( bAttachMouse == true )
+    {
+        
+       m.addFloatArg( mouseDragValue.x );
+       lastSentString += " " + ofToString( mouseDragValue ) ;
+    }
     sender.sendMessage(m);
+    
+    
 }
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
@@ -115,6 +192,14 @@ void testApp::mouseMoved(int x, int y){
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 
+    mouseDragWindow = ofPoint ( x , y ) ;
+    mouseDragValue.x = ofMap ( x , 0 , ofGetWidth() , mouseDragMin.x , mouseDragMax.x , true ) ;
+    mouseDragValue.y = ofMap ( y , 0 , ofGetHeight() , mouseDragMin.y , mouseDragMax.y , true ) ;
+    
+    if ( bAttachMouse )
+    {
+         sendMessage( "/live/tempo" ) ;
+    }
 }
 
 //--------------------------------------------------------------

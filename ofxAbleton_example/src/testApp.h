@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "TextField.h"
 
 #define HOST "localhost"
 #define SEND_PORT 9000
@@ -33,8 +34,18 @@ class testApp : public ofBaseApp {
         ofxOscReceiver receiver ; 
         string lastReceivedString ; 
     
-        void sendMessage ( string message ) ; 
+        void sendMessage ( string message ) ;
     
+        TextField messageText ;
+    
+        bool bAbletonPlaying ;
+    
+        ofPoint mouseDragWindow ;
+        ofPoint mouseDragValue ;
+        ofPoint mouseDragMax ;
+        ofPoint mouseDragMin ;
+    
+        bool bAttachMouse ;
         
     
     

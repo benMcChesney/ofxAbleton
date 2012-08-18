@@ -18,6 +18,9 @@
 		879a251454401bc0b6e4f238fc63135b /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = d9bffbbf4cc43dee890b3c3e8f7d792c /* OscTypes.cpp */; };
 		8f5205aef8861ef234f0651aba6be2ee /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81967292bfc87a0144bd32c66f3adb20 /* ofxOscSender.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		D9FD56C215DF5DD8008AC35A /* BasePolyObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9FD56BA15DF5DD8008AC35A /* BasePolyObject.cpp */; };
+		D9FD56C315DF5DD8008AC35A /* ofxPolygonHitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9FD56BC15DF5DD8008AC35A /* ofxPolygonHitTest.cpp */; };
+		D9FD56DF15DF6059008AC35A /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9FD56D915DF6059008AC35A /* ofxTextBlock.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -91,7 +94,24 @@
 		9bf3aa0d4faa89d0f8a0e545403162be /* OscReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
 		9f7986dc4eb05e75fce2c777500fdc01 /* ofxOscSender.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscSender.h; path = ../../../addons/ofxOsc/src/ofxOscSender.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		D9720AE815D0CEB800C0FE27 /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		D9FD56AA15DF5DD8008AC35A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D9FD56B815DF5DD8008AC35A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D9FD56BA15DF5DD8008AC35A /* BasePolyObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasePolyObject.cpp; sourceTree = "<group>"; };
+		D9FD56BB15DF5DD8008AC35A /* BasePolyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePolyObject.h; sourceTree = "<group>"; };
+		D9FD56BC15DF5DD8008AC35A /* ofxPolygonHitTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolygonHitTest.cpp; sourceTree = "<group>"; };
+		D9FD56BD15DF5DD8008AC35A /* ofxPolygonHitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolygonHitTest.h; sourceTree = "<group>"; };
+		D9FD56D415DF6059008AC35A /* ConsoleTextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleTextBlock.h; sourceTree = "<group>"; };
+		D9FD56D515DF6059008AC35A /* FontList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontList.h; sourceTree = "<group>"; };
+		D9FD56D615DF6059008AC35A /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
+		D9FD56D715DF6059008AC35A /* FontObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontObject.h; sourceTree = "<group>"; };
+		D9FD56D915DF6059008AC35A /* ofxTextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextBlock.cpp; sourceTree = "<group>"; };
+		D9FD56DA15DF6059008AC35A /* ofxTextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextBlock.h; sourceTree = "<group>"; };
+		D9FD56DB15DF6059008AC35A /* ofxTextSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextSuite.h; sourceTree = "<group>"; };
+		D9FD56DD15DF6059008AC35A /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		D9FD56DE15DF6059008AC35A /* TextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextUtils.h; sourceTree = "<group>"; };
+		D9FD56E215DF608C008AC35A /* AlphaStackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlphaStackItem.h; path = ../../../helios_addons/Interactive/AlphaStackItem.h; sourceTree = "<group>"; };
+		D9FD56E315DF68F1008AC35A /* OscParamTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscParamTextField.h; sourceTree = "<group>"; };
+		D9FD56E515DF7403008AC35A /* SimpleRadioButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRadioButton.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -198,6 +218,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				D9FD56A915DF5DD8008AC35A /* ofxPolygonTest */,
 				e6053ab7fec63d5f83825b880ce53c41 /* ofxOsc */,
 			);
 			name = addons;
@@ -230,6 +251,70 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
+		D9FD56A915DF5DD8008AC35A /* ofxPolygonTest */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56AA15DF5DD8008AC35A /* .gitignore */,
+				D9FD56B815DF5DD8008AC35A /* README.md */,
+				D9FD56B915DF5DD8008AC35A /* src */,
+			);
+			name = ofxPolygonTest;
+			path = ../../ofxPolygonTest;
+			sourceTree = "<group>";
+		};
+		D9FD56B915DF5DD8008AC35A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56BA15DF5DD8008AC35A /* BasePolyObject.cpp */,
+				D9FD56BB15DF5DD8008AC35A /* BasePolyObject.h */,
+				D9FD56BC15DF5DD8008AC35A /* ofxPolygonHitTest.cpp */,
+				D9FD56BD15DF5DD8008AC35A /* ofxPolygonHitTest.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		D9FD56D215DF604B008AC35A /* helios_addons */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56E115DF607F008AC35A /* Interactive */,
+				D9FD56D315DF6059008AC35A /* TextUtils */,
+			);
+			name = helios_addons;
+			sourceTree = "<group>";
+		};
+		D9FD56D315DF6059008AC35A /* TextUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56D415DF6059008AC35A /* ConsoleTextBlock.h */,
+				D9FD56D515DF6059008AC35A /* FontList.h */,
+				D9FD56D615DF6059008AC35A /* FontManager.h */,
+				D9FD56D715DF6059008AC35A /* FontObject.h */,
+				D9FD56D815DF6059008AC35A /* ofxTextSuite */,
+				D9FD56DD15DF6059008AC35A /* TextField.h */,
+				D9FD56DE15DF6059008AC35A /* TextUtils.h */,
+			);
+			name = TextUtils;
+			path = ../../../helios_addons/TextUtils;
+			sourceTree = "<group>";
+		};
+		D9FD56D815DF6059008AC35A /* ofxTextSuite */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56D915DF6059008AC35A /* ofxTextBlock.cpp */,
+				D9FD56DA15DF6059008AC35A /* ofxTextBlock.h */,
+				D9FD56DB15DF6059008AC35A /* ofxTextSuite.h */,
+			);
+			path = ofxTextSuite;
+			sourceTree = "<group>";
+		};
+		D9FD56E115DF607F008AC35A /* Interactive */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD56E215DF608C008AC35A /* AlphaStackItem.h */,
+			);
+			name = Interactive;
+			sourceTree = "<group>";
+		};
 		E4328144138ABC890047C5CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +335,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				D9FD56D215DF604B008AC35A /* helios_addons */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -263,10 +349,11 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				D9720AE815D0CEB800C0FE27 /* TextField.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				D9FD56E315DF68F1008AC35A /* OscParamTextField.h */,
+				D9FD56E515DF7403008AC35A /* SimpleRadioButton.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -438,6 +525,9 @@
 				c4782ecc372420ace0615b749e1d0d6b /* OscPrintReceivedElements.cpp in Sources */,
 				0546d1a38e13bd319cc9755b5ca7e1a0 /* OscReceivedElements.cpp in Sources */,
 				879a251454401bc0b6e4f238fc63135b /* OscTypes.cpp in Sources */,
+				D9FD56C215DF5DD8008AC35A /* BasePolyObject.cpp in Sources */,
+				D9FD56C315DF5DD8008AC35A /* ofxPolygonHitTest.cpp in Sources */,
+				D9FD56DF15DF6059008AC35A /* ofxTextBlock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

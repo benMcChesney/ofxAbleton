@@ -16,14 +16,27 @@ void testApp::setup(){
 	sender.setup(HOST, SEND_PORT );
     receiver.setup( RECEIVE_PORT ) ;
     
-    messageText.init( 10 , 400 , "type/Batang.ttf" , 16 ) ;
+    float textHeight = 50 ;
+    string fontPath =  "type/Batang.ttf" ;
+    int fontSize = 64 ; 
+    //messageText.init( 10 , 400 , "type/Batang.ttf" , 16 ) ;
+    messageText.init( 10 , 300 , 400 , textHeight , fontPath , fontSize , "TYPE HERE FOR OSC MESSAGE" , ofColor( 0 )
+                     , ofColor::red , 4.0f ) ;
     
-    bAbletonPlaying = false ; 
+    
+ //   void init ( float _x , float _y , float _width , float _height , string fontPath , int fontSize , string _defaultText , ofColor _color = ofColor::white , ofColor _activeColor = ofColor::red , float antiAlias = 4.0f )
+    arg1TF.init ( 10 , 400 , 100 , textHeight , fontPath , fontSize , "ARG1" , ofColor( 0 ) ) ;
+    arg2TF.init ( 10 , 525 , 100 , textHeight , fontPath , fontSize , "ARG2" , ofColor( 0 ) ) ;
+    arg3TF.init ( 10 , 650 , 100 , textHeight , fontPath , fontSize , "ARG3" , ofColor( 0 ) ) ;
+    
+    bAbletonPlaying = false ;
     mouseDragMax = 200 ;
     mouseDragMin = 40 ;
     mouseDragValue = mouseDragMin ;
     
     bAttachMouse = true ;
+    
+    ofEnableAlphaBlending() ; 
 }
 
 //--------------------------------------------------------------
@@ -35,14 +48,18 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
-        string msg_string;
+
+        string cachedLastString = lastReceivedString ;
+        
+        string msg_string ; 
         msg_string = m.getAddress();
-        msg_string += ": ";
+        msg_string += " : ";
         for(int i = 0; i < m.getNumArgs(); i++)
         {
             // get the argument type
+            
             msg_string += m.getArgTypeName(i);
-            msg_string += ":";
+            msg_string += " : ";
             // display the argument - make sure we get the right type
             if(m.getArgType(i) == OFXOSC_TYPE_INT32){
                 msg_string += ofToString(m.getArgAsInt32(i));
@@ -60,7 +77,7 @@ void testApp::update(){
         
         cout << msg_string << endl ; 
         
-        lastReceivedString = msg_string ;
+        lastReceivedString = msg_string + "\n" + cachedLastString ; 
     }
     
     messageText.update ( ) ;
@@ -83,7 +100,11 @@ void testApp::draw(){
     ofLine ( mouseDragWindow.x , 0 , mouseDragWindow.x , ofGetHeight() ) ;
     
     ofSetColor( 255 , 255 ,255 ) ;
-    messageText.draw ( ) ; 
+    messageText.draw ( ) ;
+    
+    arg1TF.draw ( ) ;
+    arg2TF.draw ( ) ;
+    arg3TF.draw ( ) ;
 }
 
 //--------------------------------------------------------------
@@ -130,7 +151,19 @@ void testApp::keyPressed(int key){
     }
     else{
         if ( key != 32 )
-            messageText.text.append(1, (char) key);
+        {
+            stringstream ss;
+            string s;
+            char c = (char) key ;
+            ss << c;
+            ss >> s;
+            
+            //string _text = messageText.text.append(1, (char) key);
+            messageText.appendText( s ) ;
+            arg1TF.appendText( s ) ;
+            arg2TF.appendText( s ) ;
+            arg3TF.appendText( s ) ;
+        }
         else
         {
             bAbletonPlaying = !bAbletonPlaying ;
@@ -160,20 +193,27 @@ void testApp::sendMessage ( string message )
     
     ofxOscMessage m;
     m.setAddress( message );
-    
-
-         
     lastSentString = message ;
+    
     if ( bAttachMouse == true )
     {
-        
-       m.addFloatArg( mouseDragValue.x );
-       lastSentString += " " + ofToString( mouseDragValue ) ;
+      //m.addIntArg( 2 ) ;
+      //m.addFloatArg( mouseDragValue.x );
+      // lastSentString += " " + ofToString( mouseDragValue ) ;
     }
     sender.sendMessage(m);
     
     
 }
+
+void testApp::disableAllTextFields( )
+{
+    messageText.setActive( false ) ;
+    arg1TF.setActive( false ) ;
+    arg2TF.setActive( false ) ;
+    arg3TF.setActive( false ) ;
+}
+
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
 
@@ -204,6 +244,13 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
+    
+    disableAllTextFields() ;
+    
+    messageText.input( x , y ) ;
+    arg1TF.input( x , y ) ;
+    arg2TF.input( x , y ) ;
+    arg3TF.input( x , y ) ;
 }
 
 //--------------------------------------------------------------

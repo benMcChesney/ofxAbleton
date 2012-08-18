@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "TextField.h"
+#include "OscParamTextField.h"
 
 #define HOST "localhost"
 #define SEND_PORT 9000
@@ -37,6 +38,9 @@ class testApp : public ofBaseApp {
         void sendMessage ( string message ) ;
     
         TextField messageText ;
+        OscParamTextField arg1TF ;
+        OscParamTextField arg2TF ;
+        OscParamTextField arg3TF ;
     
         bool bAbletonPlaying ;
     
@@ -46,6 +50,8 @@ class testApp : public ofBaseApp {
         ofPoint mouseDragMin ;
     
         bool bAttachMouse ;
+    
+    void disableAllTextFields( ) ; 
         
     
     
